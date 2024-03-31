@@ -17,8 +17,8 @@ const isEven = (n) => {
   isEven(n - 2);*/
 }
 
-//i realize you said asset or jest not necessary, but no harm
-//using it in this case right? I can see how it's a time suck but if you have
+//Is there harm in using assrt or jest in this case?
+//I can see how it's a time suck but if you have
 //many function calls, you can get lost on which one is failing
 //and since it's a recursive call, the input value changes from your original
 //input each time
