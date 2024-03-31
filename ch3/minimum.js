@@ -1,7 +1,7 @@
-var assert = require('assert')
+import assert from 'assert';
 const minimum = (a,b) => {
-    //return b ^ ((a ^ b) & -(a < b)); //bitwise min
-    return a <= b ? a : b;
+  //return b ^ ((a ^ b) & -(a < b)); //bitwise min
+  return a <= b ? a : b;
 }
 
 assert(minimum(1,2) == 1);
