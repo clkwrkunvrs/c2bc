@@ -31,3 +31,5 @@ console.log('one');
 chessBoard(1)
 console.log('zero');
 chessBoard(0)
+console.log('negative one');
+chessBoard(-1)
