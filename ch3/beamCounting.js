@@ -9,13 +9,6 @@ const countCharWReduce = (inputString, charToFind) => {
   }, 0);
 }
 
-/*const countChar = (inputString, charToFind) => {
-  let numChar = -1;
-  inputString.split('').forEach(character => {
-    character === charToFind ? numChar++ : null;
-  });
-  return numChar;
-}*/
 console.log("Berries " + countBs("Berries"));
 console.log("Peter " + countBs("Peter"));
 console.log("B " + countBs("B"));
