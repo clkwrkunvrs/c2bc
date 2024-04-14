@@ -1,5 +1,6 @@
 const arrayToList = (inputArr) => {
   let list = null;
+
   for (let i = inputArr.length - 1; i >= 0; i--) {
     list = {
       value: inputArr[i],
@@ -29,21 +30,18 @@ const prepend = (elem, list) => {
 
 const nth = (index, list) => {
     let count = 0; 
-    let listLength = getLengthOfList(list);
-    while (count < listLength && count < index) {
+    while (list !== null && count < index) {
         list = list.rest;  // Move to the next node
-        count++;  // Increment the count for each node encountered
+        count++; 
     }
-    return (count >= list.length) ? undefined : list;
+    return list === null ? undefined : list;
 }
 
-function getLengthOfList(node) {
-    let count = 0;
-    while (node !== null) {
-        count++;  // Increment the count for each node encountered
-        node = node.rest;  // Move to the next node
-    }
-    return count;
+const nthRecursive = (index, list, count = 0) => {
+  if (list === null) return undefined;
+  if (index === count) return list;
+  list = list.rest;
+  return nthRecursive(index, list, count + 1);
 }
 
 const testArr = [1,2,3];
@@ -54,3 +52,13 @@ let prepended = prepend(4, testList);
 console.log("prepended: " + JSON.stringify(prepended));
 let index = 2;
 console.log("index " + index + " in list is: " + JSON.stringify(nth(index, prepended)));
+console.log("index " + index + " in list is: " + JSON.stringify(nthRecursive(index, prepended)));
+index = 5;
+console.log("index " + index + " in list is: " + JSON.stringify(nth(index, prepended)));
+console.log("index " + index + " in list is: " + JSON.stringify(nthRecursive(index, prepended)));
+index = 3;
+console.log("index " + index + " in list is: " + JSON.stringify(nth(index, prepended)));
+console.log("index " + index + " in list is: " + JSON.stringify(nthRecursive(index, prepended)));
+index = 4;
+console.log("index " + index + " in list is: " + JSON.stringify(nth(index, prepended)));
+console.log("index " + index + " in list is: " + JSON.stringify(nthRecursive(index, prepended)));
