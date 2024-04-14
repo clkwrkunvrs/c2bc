@@ -7,7 +7,6 @@ const arrayToList = (inputArr) => {
       rest: list
     }
   }
-  console.log("list is: " + JSON.stringify(list));
   return list;
 }
 
@@ -17,7 +16,6 @@ const listToArray = (list) => {
         newArr.push(list.value)
         list = list.rest;  // Move to the next node
     }
-    console.log("newArr is: " + newArr);
     return newArr;
 }
 
@@ -38,27 +36,57 @@ const nth = (index, list) => {
 }
 
 const nthRecursive = (index, list, count = 0) => {
+  if (index < 0) {
+    console.log("index must be greater than zero"); 
+    return null;
+  }
   if (list === null) return undefined;
   if (index === count) return list;
   list = list.rest;
   return nthRecursive(index, list, count + 1);
 }
 
-const testArr = [1,2,3];
-let testList =  arrayToList(testArr);
-listToArray(testList);
+//TEST CASES
 
-let prepended = prepend(4, testList);
-console.log("prepended: " + JSON.stringify(prepended));
-let index = 2;
-console.log("index " + index + " in list is: " + JSON.stringify(nth(index, prepended)));
-console.log("index " + index + " in list is: " + JSON.stringify(nthRecursive(index, prepended)));
-index = 5;
-console.log("index " + index + " in list is: " + JSON.stringify(nth(index, prepended)));
-console.log("index " + index + " in list is: " + JSON.stringify(nthRecursive(index, prepended)));
-index = 3;
-console.log("index " + index + " in list is: " + JSON.stringify(nth(index, prepended)));
-console.log("index " + index + " in list is: " + JSON.stringify(nthRecursive(index, prepended)));
-index = 4;
-console.log("index " + index + " in list is: " + JSON.stringify(nth(index, prepended)));
-console.log("index " + index + " in list is: " + JSON.stringify(nthRecursive(index, prepended)));
+let testArr = [
+  [1,2,3],
+  [3,2,1],
+  [],
+  [1,1],
+  [-1],
+  [1,2,3,4,5],
+  [-1,-1],
+  [6,6],
+  [12345678912345],
+];
+
+testArr.forEach((arr) => {
+  console.log("input array: " + arr);
+
+  let testList = arrayToList(arr);
+  console.log("testList: " + JSON.stringify(testList));
+
+  let testArr = listToArray(testList);
+  console.log("testArr: " + testArr);
+
+  let nthEl = nthRecursive(0, testList);
+  console.log("testList element at index 0: " + JSON.stringify(nthEl));
+  nthEl = nthRecursive(1, testList);
+  console.log("testList element at index 1: " + JSON.stringify(nthEl));
+  nthEl = nthRecursive(2, testList);
+  console.log("testList element at index 2: " + JSON.stringify(nthEl));
+  nthEl = nthRecursive(3, testList);
+  console.log("testList element at index 3: " + JSON.stringify(nthEl));
+  nthEl = nthRecursive(4, testList);
+  console.log("testList element at index 4: " + JSON.stringify(nthEl));
+  nthEl = nthRecursive(5, testList);
+  console.log("testList element at index 5: " + JSON.stringify(nthEl));
+
+  let prepended = prepend(22, testList);
+  console.log("testList prepended with 22: " + JSON.stringify(prepended));
+  prepended = prepend(-1, testList);
+  console.log("testList prepended with -1: " + JSON.stringify(prepended));
+  prepended = prepend(0, testList);
+  console.log("testList prepended with 0: " + JSON.stringify(prepended));
+  console.log("-----------------------------------------------\n");
+});
