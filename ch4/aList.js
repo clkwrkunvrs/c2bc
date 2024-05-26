@@ -70,23 +70,23 @@ testArr.forEach((arr) => {
   console.log("testArr: " + testArr);
 
   let nthEl = nthRecursive(0, testList);
-  console.log("testList element at index 0: " + JSON.stringify(nthEl));
+  console.log("testList element at index 0: " + JSON.stringify(nthEl, null, 2));
   nthEl = nthRecursive(1, testList);
-  console.log("testList element at index 1: " + JSON.stringify(nthEl));
+  console.log("testList element at index 1: " + JSON.stringify(nthEl, null, 2));
   nthEl = nthRecursive(2, testList);
-  console.log("testList element at index 2: " + JSON.stringify(nthEl));
+  console.log("testList element at index 2: " + JSON.stringify(nthEl, null, 2));
   nthEl = nthRecursive(3, testList);
-  console.log("testList element at index 3: " + JSON.stringify(nthEl));
+  console.log("testList element at index 3: " + JSON.stringify(nthEl, null, 2));
   nthEl = nthRecursive(4, testList);
-  console.log("testList element at index 4: " + JSON.stringify(nthEl));
+  console.log("testList element at index 4: " + JSON.stringify(nthEl, null, 2));
   nthEl = nthRecursive(5, testList);
-  console.log("testList element at index 5: " + JSON.stringify(nthEl));
+  console.log("testList element at index 5: " + JSON.stringify(nthEl, null, 2));
 
   let prepended = prepend(22, testList);
-  console.log("testList prepended with 22: " + JSON.stringify(prepended));
+  console.log("testList prepended with 22: " + JSON.stringify(prepended, null, 2));
   prepended = prepend(-1, testList);
-  console.log("testList prepended with -1: " + JSON.stringify(prepended));
+  console.log("testList prepended with -1: " + JSON.stringify(prepended, null, 2));
   prepended = prepend(0, testList);
-  console.log("testList prepended with 0: " + JSON.stringify(prepended));
+  console.log("testList prepended with 0: " + JSON.stringify(prepended, null, 2));
   console.log("-----------------------------------------------\n");
 });

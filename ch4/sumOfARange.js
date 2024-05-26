@@ -1,22 +1,22 @@
 import assert from 'assert';
 
-const range = (n1, n2, step = 1) => {
+const range = (start, end, step = 1) => {
   let rangeArr = [];
 
-  if (n1 <= n2) {
-    for (let i = n1; i <= n2; i = i + step) {
+  if (start <= end) {
+    for (let i = start; i <= end; i = i + step) {
       rangeArr.push(i);
     }
   } else {
     //what indentation level should this be?
-    for (let i = n1; i >= n2; i = i + step) {
+    for (let i = start; i >= end; i = i + step) {
       rangeArr.push(i);
     }
   }
 
   //this could be done but it's less readable imo and does the <= 
   //comparison every time it loops
-  //for (let i = n1; (n1 <= n2) ? i <= n2 : i >= n2; i = i + step) {
+  //for (let i = start; (start <= end) ? i <= end : i >= end; i = i + step) {
 
   return rangeArr;
 }
