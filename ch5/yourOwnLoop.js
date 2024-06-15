@@ -1,6 +1,7 @@
 const loop = (loopValue, testFunc, bodyFunc, updateFunc) => {
   console.log("starting value is " + loopValue);
   while(testFunc(loopValue)) {
+    bodyFunc(loopValue);
     loopValue = updateFunc(loopValue);
   }
   console.log("value is now " + loopValue);
