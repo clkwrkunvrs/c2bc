@@ -1,6 +1,7 @@
 class Group {
-  constructor(values = []){
+  constructor(values = [], position = 0){
     this.values = values;
+    this.position = position;
   }
 
   add = (value) => {
@@ -51,4 +52,43 @@ class Group {
     }
     return false;
   }
+}
+
+class GroupIterator {
+  constructor(group) {
+    this.pos = 0;
+    this.group = group;
+  }
+
+    next() {
+      if (this.pos >= this.group.values.length) {
+        return {done: true};
+      }
+      let value = {current: this.group.values,
+        value: this.group.values[this.pos]};
+        this.pos++;
+        return {value, done: false};
+  }
+}
+
+Group.prototype[Symbol.iterator] = function() {
+  return new GroupIterator(this);
+}
+
+const group = new Group();
+group.add(1);
+group.add(2);
+group.add(3);
+group.add(4);
+group.add(5);
+
+for (const elem of group) {
+  console.log("next element:" + elem.value);
+}
+
+let newArr = [6,5,4,3,2,1];
+const newGroup = Group.from(newArr);
+
+for (const elem of newGroup) {
+  console.log("next elem in new group: " + elem.value);
 }
