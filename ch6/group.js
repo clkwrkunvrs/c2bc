@@ -9,7 +9,6 @@ class Group {
       this.values.push(value);
     } else {
       console.log("Group already has the value: " + value);
-
     }
   }
 
@@ -33,7 +32,7 @@ class Group {
         return ii;
       }
     }
-    console.error("value " + value + " was not found in group");
+    return -1;
   }
 
   static from = (iterableObject) => {
@@ -45,12 +44,7 @@ class Group {
   }
 
   has = (value) => {
-    for (const val of this.values) {
-      if (val === value) {
-        return true;
-      }
-    }
-    return false;
+    return this.find(value) > -1;
   }
 }
 
@@ -95,13 +89,46 @@ for (const elem of newGroup) {
 
 console.log("looking for value: " + 3);
 let indexOfThree = newGroup.find(3);
+if (indexOfThree > -1) {
 console.log("value 3 was found at: " + indexOfThree);
+} else {
+  console.log("value 3 was not found in new group");
+}
 console.log("deleting value 3 from the group");
 newGroup.delete(3);
 console.log("looking for value: " + 3);
 let indexOfThreeAfterDelete = newGroup.find(3);
-console.log("value 3 was found at: " + indexOfThreeAfterDelete);
+if (indexOfThreeAfterDelete > -1) {
+  console.log("value 3 was found at: " + indexOfThreeAfterDelete);
+} else {
+  console.log("value 3 was not found in new group");
+}
 
 for (const elem of newGroup) {
+  console.log("next elem in new group: " + elem.value);
+}
+
+console.log("creating food group");
+const foodGroup = Group.from(["Have", "a", "banana", "or"]);
+for (const elem of foodGroup) {
+  console.log("next elem in new group: " + elem.value);
+}
+console.log("adding two to food group");
+foodGroup.add("two");
+
+for (const elem of foodGroup) {
+  console.log("next elem in new group: " + elem.value);
+}
+
+if (foodGroup.has("two")) {
+  console.log("group has 'two'");
+} else {
+  console.log("group doesn't contain 'two'");
+}
+
+console.log("two is at " + foodGroup.find("two"));
+foodGroup.delete("two");
+foodGroup.add("three");
+for (const elem of foodGroup) {
   console.log("next elem in new group: " + elem.value);
 }
